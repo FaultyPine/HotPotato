@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://creyt7v2gyr8g"]
+
+[ext_resource type="Shader" path="res://UI/gradient.gdshader" id="1_cv2wg"]
+[ext_resource type="Script" path="res://UI/IngameUI.gd" id="1_r11nv"]
+[ext_resource type="Texture2D" uid="uid://cq651xuh74whp" path="res://Art/UI/stopwatch_underlay.png" id="2_fvs4x"]
+[ext_resource type="Texture2D" uid="uid://cl4ipr8i6qg2r" path="res://Art/UI/stopwatch_overlay.png" id="3_lnc5v"]
+[ext_resource type="Texture2D" uid="uid://ccvm6y1ees1fn" path="res://Art/Characters/potato/potato.png" id="4_uepbi"]
+[ext_resource type="Texture2D" uid="uid://c4blfpms0ijli" path="res://Art/UI/pause.png" id="5_oc1f1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imafk"]
+shader = ExtResource("1_cv2wg")
+shader_parameter/first_color = Color(0.607843, 0.4, 0.266667, 1)
+shader_parameter/second_color = Color(0.607843, 0.4, 0.266667, 0)
+shader_parameter/position = -0.058
+shader_parameter/size = 1.164
+shader_parameter/angle = 270.0
+shader_parameter/angle_over_time = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t4hk"]
+font_size = 29
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0n4u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="IngameUI" type="Control"]
+process_mode = 1
+custom_minimum_size = Vector2(576, 100)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+script = ExtResource("1_r11nv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_imafk")
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="TextureProgressBar" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+rounded = true
+fill_mode = 4
+texture_under = ExtResource("2_fvs4x")
+texture_progress = ExtResource("3_lnc5v")
+
+[node name="TimeNumber" type="Label" parent="ColorRect/HBoxContainer/Timer"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 37.0
+offset_right = 71.0
+offset_bottom = 77.0
+text = "1"
+label_settings = SubResource("LabelSettings_4t4hk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lives" type="HBoxContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Life" type="TextureRect" parent="ColorRect/HBoxContainer/Lives"]
+layout_mode = 2
+texture = ExtResource("4_uepbi")
+
+[node name="Life2" type="TextureRect" parent="ColorRect/HBoxContainer/Lives"]
+layout_mode = 2
+texture = ExtResource("4_uepbi")
+
+[node name="Life3" type="TextureRect" parent="ColorRect/HBoxContainer/Lives"]
+layout_mode = 2
+texture = ExtResource("4_uepbi")
+
+[node name="CurrentPartyPlayer" type="RichTextLabel" parent="ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(70, 57.725)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][font_size=40][color=blue][outline_size=7]P1"
+
+[node name="PauseButton" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q0n4u")
+action_mode = 0
+icon = ExtResource("5_oc1f1")
+icon_alignment = 2
+expand_icon = true
+
+[connection signal="pressed" from="ColorRect/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

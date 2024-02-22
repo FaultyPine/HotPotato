@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://veqvbqgnwgts"]
+
+[node name="MinigameTransition" type="Node2D"]

@@ -1,0 +1,271 @@
+[gd_scene load_steps=23 format=3 uid="uid://btx4swa3gqpxg"]
+
+[ext_resource type="Shader" path="res://UI/gradient.gdshader" id="1_y1532"]
+[ext_resource type="Texture2D" uid="uid://b10us2ug7ssck" path="res://Art/Characters/potato/frame0.png" id="2_nnbqn"]
+[ext_resource type="Texture2D" uid="uid://ccvm6y1ees1fn" path="res://Art/Characters/potato/potato.png" id="2_qed26"]
+[ext_resource type="Texture2D" uid="uid://qbb7glvb567r" path="res://Art/Characters/potato/frame1.png" id="3_hrqmt"]
+[ext_resource type="Texture2D" uid="uid://bc6idej5yb7tv" path="res://Art/Characters/potato/frame2.png" id="4_ouv5c"]
+[ext_resource type="Texture2D" uid="uid://dkxvd1mmdaqcl" path="res://Art/pan.png" id="5_gs5ge"]
+[ext_resource type="Texture2D" uid="uid://bjfmmxlok74y3" path="res://Art/Characters/potato/frame3.png" id="5_pw5g8"]
+[ext_resource type="Texture2D" uid="uid://u3hym4vlckfp" path="res://Art/fire_spritesheet.png" id="6_7psh3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hgbn"]
+shader = ExtResource("1_y1532")
+shader_parameter/first_color = Color(0.635294, 0.427451, 0.286275, 1)
+shader_parameter/second_color = Color(0.435294, 0.152941, 0, 1)
+shader_parameter/position = 0.028
+shader_parameter/size = 1.135
+shader_parameter/angle = 275.094
+shader_parameter/angle_over_time = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8d7rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nnbqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrqmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ouv5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pw5g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nnbqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nnbqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nnbqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nnbqn")
+}],
+"loop": true,
+"name": &"idle_blink",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_ksoaa"]
+resource_name = "potato_jumpy"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(60, 0), Vector2(0, -60), Vector2(-60, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.523599, 0.0, -0.523599]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyoer"]
+_data = {
+"potato_jumpy": SubResource("Animation_ksoaa")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jrk3"]
+font_size = 85
+outline_size = 4
+outline_color = Color(0.47451, 0.352941, 0.196078, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.494118)
+shadow_offset = Vector2(-0.87, 1.215)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_763hb"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(0, 0, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22dk6"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(153, 0, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k41uv"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(306, 0, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvbjx"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(459, 0, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsrmx"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(0, 217, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45s0g"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(153, 217, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omhxl"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(306, 217, 153, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7atn"]
+atlas = ExtResource("6_7psh3")
+region = Rect2(459, 217, 153, 217)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xjnv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_763hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22dk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k41uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvbjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsrmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45s0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omhxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7atn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6hgbn")
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.427451, 0.74902, 1)
+
+[node name="PotatoParticlesCPU" type="CPUParticles2D" parent="Background"]
+position = Vector2(291, -45)
+amount = 20
+lifetime = 4.0
+randomness = 1.0
+texture = ExtResource("2_qed26")
+emission_shape = 3
+emission_rect_extents = Vector2(500, 3)
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 300)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+angular_velocity_min = 32.73
+angular_velocity_max = 87.28
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedPotatoJumpy" type="AnimatedSprite2D" parent="Background/VBoxContainer/MarginContainer"]
+texture_repeat = 3
+position = Vector2(76.0567, -2.64463)
+rotation = 0.66372
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8d7rj")
+animation = &"idle_blink"
+autoplay = "idle_blink"
+frame_progress = 0.395428
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/VBoxContainer/MarginContainer/AnimatedPotatoJumpy"]
+libraries = {
+"": SubResource("AnimationLibrary_oyoer")
+}
+autoplay = "potato_jumpy"
+
+[node name="Label" type="Label" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200.595)
+layout_mode = 2
+text = "Hot Potato"
+label_settings = SubResource("LabelSettings_7jrk3")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Pan" type="TextureRect" parent="Background/VBoxContainer/Label"]
+layout_mode = 0
+offset_left = 174.5
+offset_top = 171.0
+offset_right = 442.5
+offset_bottom = 566.0
+rotation = -3.56187
+scale = Vector2(0.336873, 0.336873)
+texture = ExtResource("5_gs5ge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/VBoxContainer/Label/Pan"]
+position = Vector2(111.15, 326.047)
+rotation = -2.72344
+sprite_frames = SubResource("SpriteFrames_4xjnv")
+autoplay = "default"
+frame_progress = 0.436638
+
+[node name="TapToBegin" type="RichTextLabel" parent="Background/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=40][center][wave amp=50]Tap Anywhere to Begin[/wave][/center]"
+
+[node name="Creds" type="Label" parent="Background"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 984.0
+offset_right = 558.0
+offset_bottom = 1007.0
+text = "Grayson Clark"
+horizontal_alignment = 2

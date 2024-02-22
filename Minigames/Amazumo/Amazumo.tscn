@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://nkrilwohr81x"]
+
+[ext_resource type="Script" path="res://Minigames/Amazumo/Amazumo_Main.gd" id="1_o0fos"]
+[ext_resource type="Texture2D" uid="uid://djvytcbuotyfu" path="res://Art/Amazumo/sumo_ring.jpg" id="2_bk4ew"]
+[ext_resource type="PackedScene" uid="uid://creyt7v2gyr8g" path="res://UI/IngameUI.tscn" id="2_xkwif"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmcfd"]
+radius = 122.59
+
+[node name="Amazumo" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_o0fos")
+
+[node name="IngameUI" parent="." instance=ExtResource("2_xkwif")]
+offset_right = 576.0
+
+[node name="SumoRing" type="Sprite2D" parent="."]
+position = Vector2(247, 654)
+scale = Vector2(1.82904, 1.82904)
+texture = ExtResource("2_bk4ew")
+
+[node name="Area2D" type="Area2D" parent="SumoRing"]
+position = Vector2(13.6683, -3.2804)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SumoRing/Area2D"]
+shape = SubResource("CircleShape2D_fmcfd")
+
+[connection signal="body_exited" from="SumoRing/Area2D" to="." method="_on_area_2d_body_exited"]

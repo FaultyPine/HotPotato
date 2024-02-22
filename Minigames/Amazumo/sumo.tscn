@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://byclg6qbmwq5o"]
+
+[ext_resource type="Script" path="res://Minigames/Amazumo/sumo.gd" id="1_hg11t"]
+[ext_resource type="Texture2D" uid="uid://ck126q1sl5wqe" path="res://icon.svg" id="2_2acua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udatv"]
+radius = 64.0312
+
+[node name="SumoRoot" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 6.0
+script = ExtResource("1_hg11t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_udatv")
+
+[node name="SumoSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2acua")
+
+[node name="CPULungeTimer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[connection signal="timeout" from="CPULungeTimer" to="." method="_on_cpu_lunge_timer_timeout"]

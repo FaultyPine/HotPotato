@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://waf243strys5"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_6qerw"]
+[ext_resource type="PackedScene" uid="uid://btx4swa3gqpxg" path="res://UI/MainMenu.tscn" id="2_stg7c"]
+[ext_resource type="PackedScene" uid="uid://cmu1na1igcol1" path="res://UI/IngamePause.tscn" id="3_23q3p"]
+
+[node name="MainRoot" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6qerw")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_stg7c")]
+layout_mode = 1
+
+[node name="MinigameContainer" type="Control" parent="."]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IngamePause" parent="MinigameContainer" instance=ExtResource("3_23q3p")]
+visible = false
+layout_mode = 1
