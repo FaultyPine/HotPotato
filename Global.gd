@@ -12,11 +12,10 @@ signal on_drag_signal(start, end, duration)
 signal on_ingame_pause_signal
 signal on_ingame_minigame_over_signal(minigame_complete_status: MinigameCompleteStatus)
 
-var minigame_transition_scene = preload("res://Minigames/minigame_transition.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

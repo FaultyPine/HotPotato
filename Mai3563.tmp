@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://waf243strys5"]
+[gd_scene load_steps=6 format=3 uid="uid://waf243strys5"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_6qerw"]
 [ext_resource type="PackedScene" uid="uid://btx4swa3gqpxg" path="res://UI/MainMenu.tscn" id="2_stg7c"]
 [ext_resource type="PackedScene" uid="uid://cmu1na1igcol1" path="res://UI/IngamePause.tscn" id="3_23q3p"]
 [ext_resource type="PackedScene" uid="uid://creyt7v2gyr8g" path="res://UI/IngameUI.tscn" id="4_dqgl2"]
 [ext_resource type="PackedScene" uid="uid://veqvbqgnwgts" path="res://Minigames/Transition/minigame_transition.tscn" id="5_0dk65"]
-[ext_resource type="PackedScene" uid="uid://ctjgcuhkrw6nc" path="res://UI/minigame_complete.tscn" id="6_qudky"]
 
 [node name="MainRoot" type="Control"]
 process_mode = 3
@@ -42,12 +41,3 @@ layout_mode = 1
 visible = false
 z_index = 1
 layout_mode = 1
-
-[node name="MinigameComplete" parent="MinigameContainer" instance=ExtResource("6_qudky")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="MinigameTimer" type="Timer" parent="MinigameContainer"]
-
-[connection signal="timeout" from="MinigameContainer/MinigameTimer" to="." method="_on_minigame_timer_timeout"]

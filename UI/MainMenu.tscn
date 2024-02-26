@@ -11,8 +11,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6hgbn"]
 shader = ExtResource("1_y1532")
-shader_parameter/first_color = Color(0.635294, 0.427451, 0.286275, 1)
-shader_parameter/second_color = Color(0.435294, 0.152941, 0, 1)
+shader_parameter/first_color = Color(0.894118, 0.560784, 0.270588, 1)
+shader_parameter/second_color = Color(0.419608, 0.141176, 0.0470588, 1)
 shader_parameter/position = 0.028
 shader_parameter/size = 1.135
 shader_parameter/angle = 275.094
@@ -238,9 +238,9 @@ uppercase = true
 
 [node name="Pan" type="TextureRect" parent="Background/VBoxContainer/Label"]
 layout_mode = 0
-offset_left = 174.5
+offset_left = 194.0
 offset_top = 171.0
-offset_right = 442.5
+offset_right = 462.0
 offset_bottom = 566.0
 rotation = -3.56187
 scale = Vector2(0.336873, 0.336873)

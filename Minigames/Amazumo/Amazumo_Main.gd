@@ -3,6 +3,9 @@ extends Node2D
 
 @onready var sumo_ring = $SumoRing
 
+func get_transition_text():
+	return "PUSH\nTHEM\nOUT"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# TODO: show brief gesture/prompt screen before starting
@@ -28,9 +31,12 @@ func _process(delta):
 
 func on_player_lost():
 	print("Player lost amazumo")
+	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.FAILURE)
+	
 	
 func on_player_won():
 	print("Player won amazumo")
+	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.SUCCESS)
 
 func _on_area_2d_body_exited(body):
 	# annoying hack. area_exit is called when destroying the scene. 
