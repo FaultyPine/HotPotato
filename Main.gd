@@ -17,6 +17,7 @@ var current_minigame = null
 
 
 const minigames = [
+	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
 	preload("res://Minigames/Amazumo/Amazumo.tscn"),
 ]
 
@@ -72,7 +73,6 @@ func start_next_minigame():
 		print("ran out of minigames")
 		show_main_menu() # TEMP. If we've exhausted all minigames, what to do?
 		return
-	is_main_menu = false
 	# remove previous minigame and add new one
 	if current_minigame != null:
 		minigame_container.remove_child(current_minigame)
@@ -82,6 +82,7 @@ func start_next_minigame():
 	current_minigame_idx += 1
 	ingame_ui.visible = true
 	minigame_complete_ui.visible = false
+	is_main_menu = false
 	set_minigame_timer(10)
 	get_tree().paused = false
 
@@ -106,4 +107,8 @@ func _input(event):
 				
 
 func _on_minigame_timer_timeout():
-	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.TIMEOUT)
+	# minigames can optionally handle their timeout behavior themselves
+	if current_minigame.has_method("on_main_timer_timeout"):
+		current_minigame.on_main_timer_timeout()
+	else:
+		Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.TIMEOUT)

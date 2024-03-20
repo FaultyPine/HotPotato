@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cenxfu4wv0566"]
+
+[ext_resource type="Texture2D" uid="uid://ctgx1m6ug84e3" path="res://Art/Yakiniku/grill.png" id="1_r5dee"]
+[ext_resource type="Script" path="res://Minigames/Yakiniku/yakiniku.gd" id="1_r11al"]
+
+[node name="Yakiniku" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r11al")
+
+[node name="Grill" type="TextureRect" parent="."]
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = 48.0
+offset_right = 239.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r5dee")
+metadata/_edit_lock_ = true
+
+[node name="MeatContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MeatPoint" type="Control" parent="MeatContainer"]
+anchors_preset = 0
+offset_left = 217.0
+offset_top = 424.0
+offset_right = 257.0
+offset_bottom = 464.0
+
+[node name="MeatPoint2" type="Control" parent="MeatContainer"]
+anchors_preset = 0
+offset_left = 347.0
+offset_top = 444.0
+offset_right = 387.0
+offset_bottom = 484.0
+
+[node name="MeatPoint3" type="Control" parent="MeatContainer"]
+anchors_preset = 0
+offset_left = 229.0
+offset_top = 560.0
+offset_right = 269.0
+offset_bottom = 600.0
+
+[node name="MeatPoint4" type="Control" parent="MeatContainer"]
+anchors_preset = 0
+offset_left = 353.0
+offset_top = 574.0
+offset_right = 393.0
+offset_bottom = 614.0

@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var sumo_ring = $SumoRing
+var is_complete = false
 
 func get_transition_text():
 	return "PUSH\nTHEM\nOUT"
@@ -42,9 +43,10 @@ func _on_area_2d_body_exited(body):
 	# annoying hack. area_exit is called when destroying the scene. 
 	# Need to make sure this isn't called when we quit to main menu or switch to new minigame
 	if Global.get_main_root().is_main_menu: return 
-	if body is Sumo:
+	if body is Sumo and not is_complete:
+		is_complete = true
 		if body.is_player:
 			on_player_lost()
 		else:
 			on_player_won()
-	pass # Replace with function body.
+

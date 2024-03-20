@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://byclg6qbmwq5o"]
+[gd_scene load_steps=5 format=3 uid="uid://byclg6qbmwq5o"]
 
 [ext_resource type="Script" path="res://Minigames/Amazumo/sumo.gd" id="1_hg11t"]
 [ext_resource type="Texture2D" uid="uid://dipnennm62ryr" path="res://Art/Amazumo/sumo.png" id="2_hlj5p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udatv"]
-radius = 64.0312
+radius = 56.0357
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhnkx"]
+font_size = 25
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SumoRoot" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -17,11 +22,23 @@ shape = SubResource("CircleShape2D_udatv")
 
 [node name="SumoSprite" type="Sprite2D" parent="."]
 modulate = Color(0.815686, 0.815686, 0.815686, 1)
+position = Vector2(-2, -4)
 scale = Vector2(0.17, 0.17)
 texture = ExtResource("2_hlj5p")
 
 [node name="CPULungeTimer" type="Timer" parent="."]
 wait_time = 0.6
 autostart = true
+
+[node name="YouLabel" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -73.0
+offset_right = 34.0
+offset_bottom = -38.0
+text = "YOU"
+label_settings = SubResource("LabelSettings_hhnkx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="CPULungeTimer" to="." method="_on_cpu_lunge_timer_timeout"]

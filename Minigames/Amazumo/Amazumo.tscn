@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://djvytcbuotyfu" path="res://Art/Amazumo/sumo_ring.jpg" id="2_bk4ew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmcfd"]
-radius = 122.59
+radius = 117.548
 
 [node name="Amazumo" type="Node2D"]
 process_mode = 1

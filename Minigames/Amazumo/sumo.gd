@@ -28,7 +28,10 @@ func _ready():
 	# at this point we should have already set up is_player before adding the sumo to the scene
 	if not is_player:
 		# TODO: some other way to distinguish player and cpu?
+		sumo_sprite.modulate = Color.RED
 		sumo_sprite.texture = load("res://Art/Amazumo/sumo_red.png")
+	else:
+		$YouLabel.visible = true
 
 func sumo_look_at(self_offset: Vector2):
 	sumo_sprite.look_at(position + self_offset)
