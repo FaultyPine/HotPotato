@@ -1,4 +1,5 @@
 extends TextureRect
+class_name Meat
 
 enum CookStatus
 {
@@ -10,23 +11,16 @@ enum CookStatus
 # two cook percents, one for each side of the meat
 var cook_percent = [0,0] # [0, 1]
 var current_side = 0
-@export var cook_percent_per_tick = 0.001
+@export var cook_percent_per_tick = 0.003
 @onready var smoke_particles = $SmokeParticles
+
+var cooked_lower_bound = 0.7
+var cooked_upper_bound = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	cooked_lower_bound += randf_range(0.0, 0.3)
 
-func update_cooked_aesthetics(cook_percent: float):
-	smoke_particles.modulate.a = cook_percent
-	var brown = Color(140.0/255.0, 100.0/255.0, 0)
-	if cook_percent <= 1.0:
-		modulate = Color(1.0, 1.0, 1.0).lerp(brown, cook_percent)
-	else:
-		modulate = brown.lerp(Color(0.0, 0.0, 0.0), cook_percent-1.0)
-
-const cooked_lower_bound = 0.9
-const cooked_upper_bound = 1.1
 func is_cooked(cook_percent: float):
 	return cook_percent >= cooked_lower_bound and cook_percent <= cooked_upper_bound
 func is_uncooked(cook_percent: float):
@@ -47,9 +41,31 @@ func get_cooked_status():
 	print("COOK STATUS FALLBACK - THIS SHOULDNT HAPPEN!")
 	return CookStatus.UNCOOKED # fallback... shouldn't ever get here
 
+func update_cooked_aesthetics(cook_percent: float):
+	smoke_particles.modulate.a = cook_percent
+	if is_burnt(cook_percent):
+		modulate = Color(0.1, 0.1, 0.1)
+	elif is_cooked(cook_percent):
+		var brown = Color(140.0/255.0, 100.0/255.0, 0)
+		modulate = brown
+	else:
+		modulate = Color.WHITE
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	cook_percent[current_side] += cook_percent_per_tick
 	var current_cook = cook_percent[current_side]
+	if is_burnt(current_cook):
+		# player has burnt some side of some meat
+		print("Burnt")
+		var msg = "You Failed!\nBurnt the Meat!"
+		Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.FAILURE, msg)
 	update_cooked_aesthetics(current_cook)
 	
+func flip():
+	current_side = 1 - current_side
+
+func _on_gui_input(event):
+	if event is InputEventScreenTouch and event.is_pressed():
+		flip()

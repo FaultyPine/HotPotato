@@ -34,3 +34,5 @@ color = Color(0.313726, 0.262745, 0.211765, 1)
 hue_variation_min = 0.16
 hue_variation_max = 0.77
 hue_variation_curve = SubResource("Curve_2t8ui")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

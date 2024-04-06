@@ -10,7 +10,7 @@ enum MinigameCompleteStatus
 # global events lots of scripts might care about
 signal on_drag_signal(start, end, duration)
 signal on_ingame_pause_signal
-signal on_ingame_minigame_over_signal(minigame_complete_status: MinigameCompleteStatus)
+signal on_ingame_minigame_over_signal(minigame_complete_status: MinigameCompleteStatus, msg)
 
 
 # Called when the node enters the scene tree for the first time.

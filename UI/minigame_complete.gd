@@ -3,11 +3,14 @@ class_name MinigameCompleteUI
 
 @onready var win_lose_label = $WinLoseLabel
 
-func on_minigame_complete(status: Global.MinigameCompleteStatus):
-	if status == Global.MinigameCompleteStatus.SUCCESS:
-		win_lose_label.text = "WIN"
+func on_minigame_complete(status: Global.MinigameCompleteStatus, msg: String):
+	if len(msg) > 0:
+		win_lose_label.text = msg
 	else:
-		win_lose_label.text = "LOSE"
+		if status == Global.MinigameCompleteStatus.SUCCESS:
+			win_lose_label.text = "WIN"
+		else:
+			win_lose_label.text = "LOSE"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -36,12 +36,12 @@ func _ready():
 	Global.on_ingame_pause_signal.connect(toggle_ingame_pause)
 	Global.on_ingame_minigame_over_signal.connect(on_minigame_over)
 	
-func on_minigame_over(status: Global.MinigameCompleteStatus):
+func on_minigame_over(status: Global.MinigameCompleteStatus, msg: String = ""):
 	var success = status == Global.MinigameCompleteStatus.SUCCESS
 	if not success:
 		decrement_player_life(current_player_idx)
 	minigame_complete_ui.visible = true
-	minigame_complete_ui.on_minigame_complete(status)
+	minigame_complete_ui.on_minigame_complete(status, msg)
 	get_tree().paused = true
 	await get_tree().create_timer(2.0).timeout
 	get_tree().paused = false
@@ -77,14 +77,19 @@ func start_next_minigame():
 	if current_minigame != null:
 		minigame_container.remove_child(current_minigame)
 	current_minigame = minigames[current_minigame_idx].instantiate()
-	minigame_transition.show_transition(current_minigame, 2.5)
+	minigame_timer.paused = true
+	await(minigame_transition.show_transition(current_minigame, 2.5))
+	minigame_timer.paused = false	
 	minigame_container.add_child(current_minigame)
 	current_minigame_idx += 1
 	ingame_ui.visible = true
 	minigame_complete_ui.visible = false
 	is_main_menu = false
-	set_minigame_timer(10)
 	get_tree().paused = false
+	var minigame_time = 10
+	if current_minigame.has_method("get_minigame_time"):
+		minigame_time = current_minigame.get_minigame_time()
+	set_minigame_timer(minigame_time)
 
 func show_main_menu():
 	is_main_menu = true

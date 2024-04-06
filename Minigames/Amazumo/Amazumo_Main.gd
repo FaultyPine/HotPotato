@@ -5,7 +5,7 @@ extends Node2D
 var is_complete = false
 
 func get_transition_text():
-	return "PUSH\nTHEM\nOUT"
+	return "STAY IN\nTHE RING\n\nPUSH THE\nOPPONENT OUT"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,12 +31,10 @@ func _process(delta):
 	pass
 
 func on_player_lost():
-	print("Player lost amazumo")
 	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.FAILURE)
 	
 	
 func on_player_won():
-	print("Player won amazumo")
 	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.SUCCESS)
 
 func _on_area_2d_body_exited(body):

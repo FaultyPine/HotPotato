@@ -34,28 +34,28 @@ offset_bottom = 40.0
 
 [node name="MeatPoint" type="Control" parent="MeatContainer"]
 anchors_preset = 0
-offset_left = 217.0
-offset_top = 424.0
-offset_right = 257.0
-offset_bottom = 464.0
+offset_left = 192.0
+offset_top = 429.0
+offset_right = 232.0
+offset_bottom = 469.0
 
 [node name="MeatPoint2" type="Control" parent="MeatContainer"]
 anchors_preset = 0
-offset_left = 347.0
-offset_top = 444.0
-offset_right = 387.0
-offset_bottom = 484.0
+offset_left = 406.0
+offset_top = 442.0
+offset_right = 446.0
+offset_bottom = 482.0
 
 [node name="MeatPoint3" type="Control" parent="MeatContainer"]
 anchors_preset = 0
-offset_left = 229.0
-offset_top = 560.0
-offset_right = 269.0
-offset_bottom = 600.0
+offset_left = 204.0
+offset_top = 618.0
+offset_right = 244.0
+offset_bottom = 658.0
 
 [node name="MeatPoint4" type="Control" parent="MeatContainer"]
 anchors_preset = 0
-offset_left = 353.0
-offset_top = 574.0
-offset_right = 393.0
-offset_bottom = 614.0
+offset_left = 398.0
+offset_top = 631.0
+offset_right = 438.0
+offset_bottom = 671.0

@@ -49,5 +49,6 @@ z_index = 1
 layout_mode = 1
 
 [node name="MinigameTimer" type="Timer" parent="MinigameContainer"]
+process_mode = 1
 
 [connection signal="timeout" from="MinigameContainer/MinigameTimer" to="." method="_on_minigame_timer_timeout"]

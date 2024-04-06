@@ -17,7 +17,9 @@ func show_transition(minigame_root, duration_seconds):
 	visible = true
 	$GamePrompt.text = text
 	get_tree().paused = true
-	await(get_tree().create_timer(duration_seconds).timeout)
+	var timer = get_tree().create_timer(duration_seconds)
+	await(timer.timeout)
 	get_tree().paused = false
 	visible = false
+	return timer.timeout
 	
