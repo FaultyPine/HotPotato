@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvrognk6rq3op"]
+
+[ext_resource type="Script" path="res://Minigames/Pachinko/pachinko.gd" id="1_yuj3r"]
+[ext_resource type="PackedScene" uid="uid://dtxqbfoo8dssv" path="res://Minigames/Pachinko/ball.tscn" id="2_p3tgj"]
+[ext_resource type="PackedScene" uid="uid://darrj7ay2kobf" path="res://Minigames/Pachinko/peg.tscn" id="3_k5jka"]
+[ext_resource type="PackedScene" uid="uid://doseqq7178gyf" path="res://Minigames/Pachinko/slot.tscn" id="4_km8xs"]
+
+[node name="Pachinko" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuj3r")
+
+[node name="Ball" parent="." instance=ExtResource("2_p3tgj")]
+mass = 0.43
+gravity_scale = 0.6
+
+[node name="Pegs" type="Node2D" parent="."]
+
+[node name="Peg" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(238, 247)
+
+[node name="Peg2" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(88, 344)
+
+[node name="Peg3" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(416, 333)
+
+[node name="Peg4" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(256, 518)
+
+[node name="Peg5" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(464, 620)
+
+[node name="Peg6" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(109, 692)
+
+[node name="Peg7" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(345, 726)
+
+[node name="Peg8" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(203, 807)
+
+[node name="Peg9" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(477, 866)
+
+[node name="Peg10" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(374, 1043)
+
+[node name="Peg11" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(80, 1052)
+
+[node name="Peg12" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(239, 1077)
+
+[node name="Peg13" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(520, 1122)
+
+[node name="Peg14" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(376, 1297)
+
+[node name="Peg15" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(136, 1322)
+
+[node name="Slots" type="Node2D" parent="."]
+
+[node name="Slot" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(34, 1440)
+
+[node name="Slot2" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(184, 1440)
+
+[node name="Slot3" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(330, 1440)
+
+[node name="Slot4" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(477, 1440)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvrognk6rq3op"]
+
+[ext_resource type="Script" path="res://Minigames/Pachinko/pachinko.gd" id="1_yuj3r"]
+[ext_resource type="PackedScene" uid="uid://dtxqbfoo8dssv" path="res://Minigames/Pachinko/ball.tscn" id="2_p3tgj"]
+[ext_resource type="PackedScene" uid="uid://darrj7ay2kobf" path="res://Minigames/Pachinko/peg.tscn" id="3_k5jka"]
+
+[node name="Pachinko" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuj3r")
+
+[node name="Ball" parent="." instance=ExtResource("2_p3tgj")]
+
+[node name="Pegs" type="Node2D" parent="."]
+
+[node name="Peg" parent="Pegs" instance=ExtResource("3_k5jka")]
+
+[node name="Peg2" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(142, 256)
+
+[node name="Peg3" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(416, 246)
+
+[node name="Peg4" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(349, 321)
+
+[node name="Peg5" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(469, 423)
+
+[node name="Peg6" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(244, 511)
+
+[node name="Peg7" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(129, 427)
+
+[node name="Peg8" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(63, 643)
+
+[node name="Peg9" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(381, 667)
+
+[node name="Peg10" parent="Pegs" instance=ExtResource("3_k5jka")]
+position = Vector2(489, 713)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

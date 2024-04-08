@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvrognk6rq3op"]
+
+[ext_resource type="Script" path="res://Minigames/Pachinko/pachinko.gd" id="1_yuj3r"]
+[ext_resource type="PackedScene" uid="uid://dtxqbfoo8dssv" path="res://Minigames/Pachinko/ball.tscn" id="2_p3tgj"]
+[ext_resource type="PackedScene" uid="uid://doseqq7178gyf" path="res://Minigames/Pachinko/slot.tscn" id="4_km8xs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nbkgp"]
+bounce = 0.56
+
+[node name="Pachinko" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuj3r")
+
+[node name="Ball" parent="." instance=ExtResource("2_p3tgj")]
+mass = 0.16
+physics_material_override = SubResource("PhysicsMaterial_nbkgp")
+gravity_scale = 0.1
+linear_damp = 1.842
+
+[node name="Pegs" type="Node2D" parent="."]
+
+[node name="Rows" type="Node2D" parent="Pegs"]
+
+[node name="Row" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 132)
+
+[node name="Row2" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 245)
+
+[node name="Row3" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 371)
+
+[node name="Row4" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 513)
+
+[node name="Row5" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 613)
+
+[node name="Row6" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 719)
+
+[node name="Row7" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 830)
+
+[node name="Row8" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 919)
+
+[node name="Row9" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1013)
+
+[node name="Row10" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1116)
+
+[node name="Row11" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1190)
+
+[node name="Row12" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1289)
+
+[node name="Row13" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1361)
+
+[node name="Row14" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1444)
+
+[node name="Row15" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1545)
+
+[node name="Row16" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1654)
+
+[node name="Row17" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1737)
+
+[node name="Row18" type="Node2D" parent="Pegs/Rows"]
+position = Vector2(0, 1828)
+
+[node name="Columns" type="Node2D" parent="Pegs"]
+
+[node name="Column" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(68, 0)
+
+[node name="Column2" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(130, 0)
+
+[node name="Column3" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(172, 0)
+
+[node name="Column4" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(217, 0)
+
+[node name="Column5" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(271, 0)
+
+[node name="Column6" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(324, 0)
+
+[node name="Column7" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(384, 0)
+
+[node name="Column8" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(432, 0)
+
+[node name="Column9" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(481, 0)
+
+[node name="Column10" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(528, 0)
+
+[node name="Column11" type="Node2D" parent="Pegs/Columns"]
+position = Vector2(567, 0)
+
+[node name="PegContainer" type="Node2D" parent="Pegs"]
+
+[node name="Slots" type="Node2D" parent="."]
+position = Vector2(0, 479)
+
+[node name="Slot" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(34, 1440)
+
+[node name="Slot2" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(184, 1440)
+
+[node name="Slot3" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(330, 1440)
+
+[node name="Slot4" parent="Slots" instance=ExtResource("4_km8xs")]
+position = Vector2(477, 1440)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

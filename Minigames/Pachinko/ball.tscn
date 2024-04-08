@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtxqbfoo8dssv"]
+
+[ext_resource type="Texture2D" uid="uid://ck126q1sl5wqe" path="res://icon.svg" id="1_hpjoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yy48t"]
+radius = 19.2354
+
+[node name="Ball" type="RigidBody2D"]
+position = Vector2(268, 0)
+gravity_scale = 0.65
+linear_damp = 1.0
+
+[node name="BallSprite" type="TextureRect" parent="."]
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
+texture = ExtResource("1_hpjoj")
+expand_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yy48t")

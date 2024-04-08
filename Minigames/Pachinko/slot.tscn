@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://doseqq7178gyf"]
+
+[ext_resource type="Texture2D" uid="uid://ck126q1sl5wqe" path="res://icon.svg" id="1_05vvq"]
+[ext_resource type="Script" path="res://Minigames/Pachinko/slot.gd" id="1_mdmm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_veg8l"]
+size = Vector2(146.5, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k565q"]
+size = Vector2(8, 48)
+
+[sub_resource type="Gradient" id="Gradient_6gpa6"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0.309804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e3yvt"]
+gradient = SubResource("Gradient_6gpa6")
+width = 134
+height = 39
+
+[node name="Slot" type="Area2D"]
+script = ExtResource("1_mdmm3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_veg8l")
+
+[node name="Side" type="StaticBody2D" parent="."]
+position = Vector2(-72, -4)
+
+[node name="SideSprite" type="TextureRect" parent="Side"]
+offset_left = -4.005
+offset_top = -25.385
+offset_right = 3.78
+offset_bottom = 25.19
+texture = ExtResource("1_05vvq")
+expand_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Side"]
+shape = SubResource("RectangleShape2D_k565q")
+
+[node name="Side2" type="StaticBody2D" parent="."]
+position = Vector2(70, -4)
+
+[node name="SideSprite" type="TextureRect" parent="Side2"]
+offset_left = -4.005
+offset_top = -25.385
+offset_right = 3.78
+offset_bottom = 25.19
+texture = ExtResource("1_05vvq")
+expand_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Side2"]
+shape = SubResource("RectangleShape2D_k565q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -67.0
+offset_top = -20.0
+offset_right = 132.0
+offset_bottom = 44.0
+texture = SubResource("GradientTexture2D_e3yvt")
+expand_mode = 2
+stretch_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

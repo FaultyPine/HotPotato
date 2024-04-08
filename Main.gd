@@ -17,6 +17,7 @@ var current_minigame = null
 
 
 const minigames = [
+	preload("res://Minigames/Pachinko/pachinko.tscn"),
 	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
 	preload("res://Minigames/Amazumo/Amazumo.tscn"),
 ]
