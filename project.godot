@@ -27,6 +27,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
+[editor]
+
+import/use_multiple_threads=false
+
 [input]
 
 dev_quit={

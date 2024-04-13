@@ -15,40 +15,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_6qerw")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_stg7c")]
 layout_mode = 1
+mouse_filter = 1
 
 [node name="MinigameContainer" type="Control" parent="."]
-process_mode = 1
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="IngamePause" parent="MinigameContainer" instance=ExtResource("3_23q3p")]
-visible = false
-layout_mode = 1
-
-[node name="IngameUI" parent="MinigameContainer" instance=ExtResource("4_dqgl2")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="MinigameTransition" parent="MinigameContainer" instance=ExtResource("5_0dk65")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="MinigameComplete" parent="MinigameContainer" instance=ExtResource("6_qudky")]
-visible = false
-z_index = 1
-layout_mode = 1
+mouse_filter = 1
 
 [node name="MinigameTimer" type="Timer" parent="MinigameContainer"]
 process_mode = 1
+
+[node name="IngamePause" parent="." instance=ExtResource("3_23q3p")]
+visible = false
+layout_mode = 1
+
+[node name="IngameUI" parent="." instance=ExtResource("4_dqgl2")]
+visible = false
+z_index = 1
+layout_mode = 1
+
+[node name="MinigameTransition" parent="." instance=ExtResource("5_0dk65")]
+visible = false
+z_index = 1
+layout_mode = 1
+
+[node name="MinigameComplete" parent="." instance=ExtResource("6_qudky")]
+visible = false
+z_index = 1
+layout_mode = 1
 
 [connection signal="timeout" from="MinigameContainer/MinigameTimer" to="." method="_on_minigame_timer_timeout"]

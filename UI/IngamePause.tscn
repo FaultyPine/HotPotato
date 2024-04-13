@@ -1,47 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmu1na1igcol1"]
+[gd_scene load_steps=4 format=3 uid="uid://cmu1na1igcol1"]
 
 [ext_resource type="Script" path="res://UI/IngamePause.gd" id="1_nwwe5"]
 
+[sub_resource type="Gradient" id="Gradient_e4dfi"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.427451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8dvrh"]
+gradient = SubResource("Gradient_e4dfi")
+width = 119
+
 [node name="IngamePause" type="Control"]
-process_mode = 2
+process_mode = 3
 z_index = 1
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_nwwe5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 225.0
+offset_top = 438.693
+offset_right = 374.095
+offset_bottom = 588.307
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8dvrh")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -68.0
+offset_top = -48.0
+offset_right = 63.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Return to Game"
 
-[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

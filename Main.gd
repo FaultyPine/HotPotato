@@ -17,6 +17,7 @@ var current_minigame = null
 
 
 const minigames = [
+	preload("res://Minigames/Chosoku/chosoku.tscn"),
 	preload("res://Minigames/Pachinko/pachinko.tscn"),
 	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
 	preload("res://Minigames/Amazumo/Amazumo.tscn"),
@@ -24,11 +25,11 @@ const minigames = [
 
 @onready var main_menu = $MainMenu
 @onready var minigame_container = $MinigameContainer
-@onready var ingame_pause_menu = $MinigameContainer/IngamePause
-@onready var ingame_ui = $MinigameContainer/IngameUI
-@onready var minigame_transition = $MinigameContainer/MinigameTransition
+@onready var ingame_pause_menu = $IngamePause
+@onready var ingame_ui = $IngameUI
+@onready var minigame_transition = $MinigameTransition
 @onready var minigame_timer = $MinigameContainer/MinigameTimer
-@onready var minigame_complete_ui: MinigameCompleteUI = $MinigameContainer/MinigameComplete
+@onready var minigame_complete_ui: MinigameCompleteUI = $MinigameComplete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
