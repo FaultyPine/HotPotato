@@ -17,6 +17,7 @@ var current_minigame = null
 
 
 const minigames = [
+	preload("res://Minigames/KikuNoHana/kikunohana.tscn"),
 	preload("res://Minigames/Chosoku/chosoku.tscn"),
 	preload("res://Minigames/Pachinko/pachinko.tscn"),
 	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
@@ -30,6 +31,9 @@ const minigames = [
 @onready var minigame_transition = $MinigameTransition
 @onready var minigame_timer = $MinigameContainer/MinigameTimer
 @onready var minigame_complete_ui: MinigameCompleteUI = $MinigameComplete
+
+func get_current_minigame():
+	return current_minigame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

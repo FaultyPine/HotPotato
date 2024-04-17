@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3r7vxhg74684"]
+
+[ext_resource type="Texture2D" uid="uid://cj8tdpjt2x5j1" path="res://Art/KikuNoHana/flower.png" id="1_l3iao"]
+
+[node name="Flower" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="FlowerSprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 24.0
+offset_bottom = 23.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_l3iao")
+expand_mode = 2

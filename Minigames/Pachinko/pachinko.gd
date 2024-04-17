@@ -31,7 +31,6 @@ func spawn_peg(row: Node2D, col: Node2D):
 	peg.position = Vector2(col.position.x, row.position.y)
 	peg_container.add_child(peg)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	slots.position.y -= 2.0
 

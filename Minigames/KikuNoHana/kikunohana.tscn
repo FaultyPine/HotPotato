@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjbxtsmb7hu8j"]
+
+[ext_resource type="Script" path="res://Minigames/KikuNoHana/kikunohana.gd" id="1_eyyhd"]
+[ext_resource type="PackedScene" uid="uid://d3r7vxhg74684" path="res://Minigames/KikuNoHana/flower.tscn" id="1_tpjoq"]
+[ext_resource type="PackedScene" uid="uid://2q7gec52xipa" path="res://Minigames/KikuNoHana/cup.tscn" id="2_25m4r"]
+
+[sub_resource type="Gradient" id="Gradient_d3tix"]
+colors = PackedColorArray(0.795489, 0.268449, 0.530645, 1, 0.47451, 0.807843, 0.839216, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_18k7m"]
+gradient = SubResource("Gradient_d3tix")
+fill_from = Vector2(0.517094, 0)
+fill_to = Vector2(0.57265, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghjyw"]
+font_size = 49
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Kikunohana" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_eyyhd")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_18k7m")
+
+[node name="Flower" parent="." instance=ExtResource("1_tpjoq")]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 352.0
+offset_right = 294.0
+offset_bottom = 392.0
+
+[node name="CupsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Cup" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+modulate = Color(0.858824, 0.858824, 0.858824, 1)
+layout_mode = 0
+offset_left = 34.0
+offset_top = 415.0
+offset_right = 74.0
+offset_bottom = 455.0
+
+[node name="Cup2" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+modulate = Color(0.721569, 0.721569, 0.721569, 1)
+layout_mode = 0
+offset_left = 288.0
+offset_top = 422.0
+offset_right = 328.0
+offset_bottom = 462.0
+
+[node name="Cup3" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+layout_mode = 0
+offset_left = 433.0
+offset_top = 423.0
+offset_right = 473.0
+offset_bottom = 463.0
+
+[node name="Cup4" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 416.0
+offset_right = 206.0
+offset_bottom = 456.0
+
+[node name="Cup5" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+modulate = Color(0.721569, 0.721569, 0.721569, 1)
+layout_mode = 0
+offset_left = 220.0
+offset_top = 564.0
+offset_right = 260.0
+offset_bottom = 604.0
+
+[node name="Cup6" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+layout_mode = 0
+offset_left = 365.0
+offset_top = 565.0
+offset_right = 405.0
+offset_bottom = 605.0
+
+[node name="Cup7" parent="CupsContainer" instance=ExtResource("2_25m4r")]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 558.0
+offset_right = 138.0
+offset_bottom = 598.0
+
+[node name="CupSpots" type="Node2D" parent="."]
+
+[node name="CupSpot" type="Node2D" parent="CupSpots"]
+position = Vector2(85, 478)
+
+[node name="CupSpot2" type="Node2D" parent="CupSpots"]
+position = Vector2(224, 478)
+
+[node name="CupSpot3" type="Node2D" parent="CupSpots"]
+position = Vector2(345, 478)
+
+[node name="CupSpot4" type="Node2D" parent="CupSpots"]
+position = Vector2(489, 476)
+
+[node name="CupSpot5" type="Node2D" parent="CupSpots"]
+position = Vector2(147, 645)
+
+[node name="CupSpot6" type="Node2D" parent="CupSpots"]
+position = Vector2(268, 645)
+
+[node name="CupSpot7" type="Node2D" parent="CupSpots"]
+position = Vector2(412, 643)
+
+[node name="WhereIsFlowerText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 133.0
+offset_top = 166.0
+offset_right = 434.0
+offset_bottom = 234.0
+mouse_filter = 1
+text = "WHERE IS IT?"
+label_settings = SubResource("LabelSettings_ghjyw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TapTheCupText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 133.0
+offset_top = 730.0
+offset_right = 434.0
+offset_bottom = 798.0
+mouse_filter = 1
+text = "TAP THE CUP"
+label_settings = SubResource("LabelSettings_ghjyw")
+horizontal_alignment = 1
+vertical_alignment = 1
