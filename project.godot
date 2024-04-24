@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="HotPotato"
+config/name="Hot Potato"
+config/name_localized={
+"ja_JP": "ホット・ポテト"
+}
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -42,6 +45,10 @@ dev_quit={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://UI/HotPotato_Translation - Sheet1.en.translation", "res://UI/HotPotato_Translation - Sheet1.ja.translation")
 
 [rendering]
 

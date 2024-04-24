@@ -1,0 +1,26 @@
+key,en,ja
+en_LANGUAGE_NAME,English,英語
+ja_LANGUAGE_NAME,Japanese,日本語
+CREDITS,Grayson Clark,グレイソン・クラーク
+LANGUAGE,Language,言語
+GAME_NAME,Hot Potato,ホット・ポテト
+TAP_BEGIN,Tap Anywhere To Begin,どこでもタップして開始
+PAUSED,Paused,休止
+UNPAUSE,Continue,続ける
+MAIN_MENU,Main Menu,メインメニュー
+YOU,You,あなた
+WIN,WIN,勝利
+LOSE,LOSE,失う
+
+KIKUNOHANA_TRANSITION,FOLLOW\nTHE\nFLOWER,花を追う
+KIKUNOHANA_WHERE,Where is it?,それはどこですか？
+KIKUNOHANA_TAP_THE_CUP,Tap the cup,カップを叩く
+
+AMAZUMO_TRANSITION,STAY IN\nTHE RING\nPUSH THE\nOPPONENT OUT,リングに\nリング\n相手を\n相手を押し出す
+
+YAKINIKU_FAILURE_BURNT,You Failed!\nBurnt the Meat!,あなたは失敗した！\n肉を焼いた
+YAKINIKU_TRANSITION,COOK BOTH SIDES\nOF THE\nMEAT\n\nTAP TO FLIP,両面を焼く\n肉の両面を焼く\nタップして裏返す
+
+PACHINKO_TRANSITION,PACHINKO!\nTap left and right sides\n of screen to move ball\navoid the pegs,左右をタップ\nボールを動かす\nペグを避ける
+
+CHOSOKU_TRANSITION,STAY CALM\nKEEP FINGER INSIDE CIRCLE,冷静に\n指を円の内側に

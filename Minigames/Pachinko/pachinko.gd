@@ -11,7 +11,7 @@ var peg_scene = preload("res://Minigames/Pachinko/peg.tscn")
 @export var ball_velocity_step = 10
 
 func get_transition_text():
-	return "PACHINKO!\nTap left and right sides\n of screen to move ball\navoid the pegs"
+	return tr("PACHINKO_TRANSITION")
 
 func _ready():
 	var num_cols = columns.get_child_count()

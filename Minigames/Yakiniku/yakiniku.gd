@@ -4,14 +4,13 @@ var meat_scene = preload("res://Minigames/Yakiniku/meat.tscn")
 @onready var meat_container = $MeatContainer
 
 func on_main_timer_timeout():
-	print("custom timeout!")
 	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.TIMEOUT)
 
 func get_minigame_time():
 	return 15.0
 
 func get_transition_text():
-	return "COOK BOTH SIDES\nOF THE\nMEAT\n\nTAP TO FLIP"
+	return tr("YAKINIKU_TRANSITION")
 
 var num_meat = 4 # should be the same as the number of MeatPoint nodes in the MeatContainer
 

@@ -5,7 +5,7 @@ extends Node2D
 var is_complete = false
 
 func get_transition_text():
-	return "STAY IN\nTHE RING\n\nPUSH THE\nOPPONENT OUT"
+	return tr("AMAZUMO_TRANSITION")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

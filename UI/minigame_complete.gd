@@ -8,9 +8,9 @@ func on_minigame_complete(status: Global.MinigameCompleteStatus, msg: String):
 		win_lose_label.text = msg
 	else:
 		if status == Global.MinigameCompleteStatus.SUCCESS:
-			win_lose_label.text = "WIN"
+			win_lose_label.text = tr("WIN")
 		else:
-			win_lose_label.text = "LOSE"
+			win_lose_label.text = tr("LOSE")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

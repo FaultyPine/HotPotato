@@ -6,7 +6,7 @@ extends Control
 @onready var progressBar = $ProgressBar
 
 @export var circleInterpolationSpeedMult = 0.2
-@export var progressTick = 0.2
+@export var progressTick = 0.12
 
 var is_in_circle = false
 var progress = 0
@@ -61,7 +61,7 @@ func _on_circle_reposition_timer_timeout():
 	circleRepositionTimer.start()
 
 func get_transition_text():
-	return "STAY CALM\nKEEP FINGER INSIDE CIRCLE"
+	return tr("CHOSOKU_TRANSITION")
 	
 func get_minigame_time():
 	return 15.0

@@ -91,6 +91,7 @@ layout_mode = 2
 texture = ExtResource("4_uepbi")
 
 [node name="CurrentPartyPlayer" type="RichTextLabel" parent="ColorRect/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(70, 57.725)
 layout_mode = 2
 size_flags_vertical = 4

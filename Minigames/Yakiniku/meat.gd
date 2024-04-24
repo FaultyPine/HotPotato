@@ -11,15 +11,15 @@ enum CookStatus
 # two cook percents, one for each side of the meat
 var cook_percent = [0,0] # [0, 1]
 var current_side = 0
-@export var cook_percent_per_tick = 0.003
+@export var cook_percent_per_tick = 0.002
 @onready var smoke_particles = $SmokeParticles
 
-var cooked_lower_bound = 0.7
-var cooked_upper_bound = 1.5
+var cooked_lower_bound = 1.0
+var cooked_upper_bound = 1.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cooked_lower_bound += randf_range(0.0, 0.3)
+	cooked_lower_bound += randf_range(-0.1, 0.2)
 
 func is_cooked(cook_percent: float):
 	return cook_percent >= cooked_lower_bound and cook_percent <= cooked_upper_bound
@@ -58,8 +58,7 @@ func _process(delta):
 	var current_cook = cook_percent[current_side]
 	if is_burnt(current_cook):
 		# player has burnt some side of some meat
-		print("Burnt")
-		var msg = "You Failed!\nBurnt the Meat!"
+		var msg = tr("YAKINIKU_FAILURE_BURNT")
 		Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.FAILURE, msg)
 	update_cooked_aesthetics(current_cook)
 	

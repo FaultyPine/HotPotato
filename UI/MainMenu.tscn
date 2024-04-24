@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://btx4swa3gqpxg"]
+[gd_scene load_steps=24 format=3 uid="uid://btx4swa3gqpxg"]
 
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_ti651"]
 [ext_resource type="Shader" path="res://UI/gradient.gdshader" id="1_y1532"]
 [ext_resource type="Texture2D" uid="uid://b10us2ug7ssck" path="res://Art/Characters/potato/frame0.png" id="2_nnbqn"]
 [ext_resource type="Texture2D" uid="uid://ccvm6y1ees1fn" path="res://Art/Characters/potato/potato.png" id="2_qed26"]
@@ -164,6 +165,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ti651")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6hgbn")
@@ -174,6 +177,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0.427451, 0.74902, 1)
 
 [node name="PotatoParticlesCPU" type="CPUParticles2D" parent="Background"]
@@ -230,7 +234,7 @@ autoplay = "potato_jumpy"
 [node name="Label" type="Label" parent="Background/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200.595)
 layout_mode = 2
-text = "Hot Potato"
+text = "GAME_NAME"
 label_settings = SubResource("LabelSettings_7jrk3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -259,13 +263,32 @@ custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=40][center][wave amp=50]Tap Anywhere to Begin[/wave][/center]"
+text = "[font_size=40][center][wave amp=50]TAP_BEGIN[/wave][/center]"
 
 [node name="Creds" type="Label" parent="Background"]
 layout_mode = 2
-offset_left = 19.0
-offset_top = 984.0
-offset_right = 558.0
-offset_bottom = 1007.0
-text = "Grayson Clark"
-horizontal_alignment = 2
+offset_left = 21.0
+offset_top = 975.0
+offset_right = 560.0
+offset_bottom = 998.0
+mouse_filter = 1
+text = "CREDITS"
+
+[node name="Languages" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 31.0
+item_count = 3
+selected = 0
+allow_reselect = true
+popup/item_0/text = "LANGUAGE"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "en"
+popup/item_1/id = 1
+popup/item_2/text = "ja"
+popup/item_2/id = 2
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]
+[connection signal="item_selected" from="Languages" to="." method="_on_option_button_item_selected"]

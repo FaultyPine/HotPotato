@@ -12,7 +12,7 @@ var num_shuffles = -1
 const max_num_shuffles = 3
 
 func get_transition_text():
-	return "FOLLOW\nTHE\nFLOWER"
+	return tr("KIKUNOHANA_TRANSITION")
 
 func cups_done_moving():
 	whereIsFlowerText.visible = true
@@ -68,9 +68,13 @@ func _ready():
 	assert(len(cups) == len(spots))
 	for i in range(len(cups)):
 		cups[i].position = spots[i].position
-	await get_tree().create_timer(0.8).timeout
-	await(put_flower_under_cup())
-	await get_tree().create_timer(0.2).timeout
+	# since we might leave the scene while we're waiting, need to check if we're still in scene
+	if get_tree():
+		await(get_tree().create_timer(0.8).timeout)
+	if get_tree():
+		await(put_flower_under_cup())
+	if get_tree():
+		await(get_tree().create_timer(0.2).timeout)
 	move_cups()
 	
 func _process(delta):

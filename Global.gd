@@ -11,7 +11,8 @@ enum MinigameCompleteStatus
 signal on_drag_signal(start, end, duration)
 signal on_ingame_pause_signal
 signal on_ingame_minigame_over_signal(minigame_complete_status: MinigameCompleteStatus, msg)
-
+signal on_lang_change(lang)
+signal scene_fully_ready()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +25,7 @@ func _process(delta):
 
 func get_main_root() -> MainRoot:
 	var root = get_node("/root/MainRoot")
-	assert(root is MainRoot)
+	assert(root is MainRoot or root == null)
 	return root
 
 func on_drag(start: Vector2, end: Vector2, duration: float):

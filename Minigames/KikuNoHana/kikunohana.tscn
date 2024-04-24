@@ -13,7 +13,7 @@ fill_from = Vector2(0.517094, 0)
 fill_to = Vector2(0.57265, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ghjyw"]
-font_size = 49
+font_size = 45
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -131,12 +131,12 @@ position = Vector2(412, 643)
 [node name="WhereIsFlowerText" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 133.0
+offset_left = 30.0
 offset_top = 166.0
-offset_right = 434.0
+offset_right = 548.0
 offset_bottom = 234.0
 mouse_filter = 1
-text = "WHERE IS IT?"
+text = "KIKUNOHANA_WHERE"
 label_settings = SubResource("LabelSettings_ghjyw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -144,12 +144,12 @@ vertical_alignment = 1
 [node name="TapTheCupText" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 133.0
+offset_left = -33.0
 offset_top = 730.0
-offset_right = 434.0
+offset_right = 638.0
 offset_bottom = 798.0
 mouse_filter = 1
-text = "TAP THE CUP"
+text = "KIKUNOHANA_TAP_THE_CUP"
 label_settings = SubResource("LabelSettings_ghjyw")
 horizontal_alignment = 1
 vertical_alignment = 1

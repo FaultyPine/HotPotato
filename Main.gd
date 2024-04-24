@@ -17,10 +17,10 @@ var current_minigame = null
 
 
 const minigames = [
+	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
 	preload("res://Minigames/KikuNoHana/kikunohana.tscn"),
 	preload("res://Minigames/Chosoku/chosoku.tscn"),
 	preload("res://Minigames/Pachinko/pachinko.tscn"),
-	preload("res://Minigames/Yakiniku/yakiniku.tscn"),
 	preload("res://Minigames/Amazumo/Amazumo.tscn"),
 ]
 
@@ -41,6 +41,9 @@ func _ready():
 	show_main_menu()
 	Global.on_ingame_pause_signal.connect(toggle_ingame_pause)
 	Global.on_ingame_minigame_over_signal.connect(on_minigame_over)
+	# assuming MainRoot is the very topmost node in our
+	# hierarchy. So when it is ready, that means all it's children are too
+	Global.scene_fully_ready.emit()
 	
 func on_minigame_over(status: Global.MinigameCompleteStatus, msg: String = ""):
 	var success = status == Global.MinigameCompleteStatus.SUCCESS
@@ -89,6 +92,7 @@ func start_next_minigame():
 	minigame_container.add_child(current_minigame)
 	current_minigame_idx += 1
 	ingame_ui.visible = true
+	minigame_container.visible = true
 	minigame_complete_ui.visible = false
 	is_main_menu = false
 	get_tree().paused = false
@@ -101,23 +105,21 @@ func show_main_menu():
 	is_main_menu = true
 	main_menu.visible = true
 	ingame_ui.visible = false
+	minigame_container.visible = false
 	minigame_complete_ui.visible = false	
 	if current_minigame != null:
 		current_minigame_idx = 0
 		minigame_container.remove_child(current_minigame)
 		current_minigame = null
 
-func _input(event):
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			if is_main_menu:
-				print("booting up first minigame")
-				main_menu.visible = false
-				# TODO: tutorial first?
-				start_next_minigame()
-				
+func trigger_minigames_start():
+	if is_main_menu:
+		main_menu.visible = false
+		# TODO: tutorial first?
+		start_next_minigame()	
 
 func _on_minigame_timer_timeout():
+	if current_minigame == null: return
 	# minigames can optionally handle their timeout behavior themselves
 	if current_minigame.has_method("on_main_timer_timeout"):
 		current_minigame.on_main_timer_timeout()
