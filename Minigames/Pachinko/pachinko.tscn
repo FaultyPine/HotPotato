@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvrognk6rq3op"]
+[gd_scene load_steps=8 format=3 uid="uid://dvrognk6rq3op"]
 
 [ext_resource type="Script" path="res://Minigames/Pachinko/pachinko.gd" id="1_yuj3r"]
 [ext_resource type="PackedScene" uid="uid://dtxqbfoo8dssv" path="res://Minigames/Pachinko/ball.tscn" id="2_p3tgj"]
+[ext_resource type="Texture2D" uid="uid://dy1r2kdfpcaca" path="res://Art/Pachinko/abstract-background-with-wooden-planks-vector.jpg" id="4_g2834"]
 [ext_resource type="PackedScene" uid="uid://doseqq7178gyf" path="res://Minigames/Pachinko/slot.tscn" id="4_km8xs"]
+[ext_resource type="Texture2D" uid="uid://i3khytopmh2x" path="res://Art/Pachinko/2767652.jpg" id="5_ucy0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nbkgp"]
 bounce = 0.56
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ccy"]
+size = Vector2(11, 1951)
 
 [node name="Pachinko" type="Control"]
 process_mode = 1
@@ -19,11 +24,27 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yuj3r")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1535.0
+offset_top = -665.0
+offset_right = 2976.0
+offset_bottom = 315.0
+rotation = 1.57382
+scale = Vector2(2.58424, 2.6272)
+texture = ExtResource("4_g2834")
+
 [node name="Ball" parent="." instance=ExtResource("2_p3tgj")]
+position = Vector2(287, 0)
+scale = Vector2(0.787496, 0.787496)
 mass = 0.16
 physics_material_override = SubResource("PhysicsMaterial_nbkgp")
 gravity_scale = 0.1
 linear_damp = 1.842
+
+[node name="Camera2D" type="Camera2D" parent="Ball"]
 
 [node name="Pegs" type="Node2D" parent="."]
 
@@ -98,7 +119,7 @@ position = Vector2(172, 0)
 position = Vector2(217, 0)
 
 [node name="Column5" type="Node2D" parent="Pegs/Columns"]
-position = Vector2(271, 0)
+position = Vector2(264, 0)
 
 [node name="Column6" type="Node2D" parent="Pegs/Columns"]
 position = Vector2(324, 0)
@@ -116,12 +137,12 @@ position = Vector2(481, 0)
 position = Vector2(528, 0)
 
 [node name="Column11" type="Node2D" parent="Pegs/Columns"]
-position = Vector2(567, 0)
+position = Vector2(561, 0)
 
 [node name="PegContainer" type="Node2D" parent="Pegs"]
 
 [node name="Slots" type="Node2D" parent="."]
-position = Vector2(0, 479)
+position = Vector2(40, 479)
 
 [node name="Slot" parent="Slots" instance=ExtResource("4_km8xs")]
 position = Vector2(34, 1440)
@@ -134,5 +155,37 @@ position = Vector2(330, 1440)
 
 [node name="Slot4" parent="Slots" instance=ExtResource("4_km8xs")]
 position = Vector2(477, 1440)
+
+[node name="Walls" type="Node2D" parent="Slots"]
+position = Vector2(-40, -479)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Slots/Walls"]
+
+[node name="TextureRect" type="TextureRect" parent="Slots/Walls/StaticBody2D"]
+offset_left = -21.0
+offset_right = 979.0
+offset_bottom = 997.0
+scale = Vector2(0.025594, 1.94535)
+texture = ExtResource("5_ucy0n")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slots/Walls/StaticBody2D"]
+position = Vector2(-4.5, 965.5)
+shape = SubResource("RectangleShape2D_y1ccy")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Slots/Walls"]
+position = Vector2(591, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Slots/Walls/StaticBody2D2"]
+offset_left = -21.0
+offset_right = 979.0
+offset_bottom = 997.0
+scale = Vector2(0.025594, 1.94535)
+texture = ExtResource("5_ucy0n")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slots/Walls/StaticBody2D2"]
+position = Vector2(-15, 966)
+shape = SubResource("RectangleShape2D_y1ccy")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

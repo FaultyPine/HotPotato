@@ -8,15 +8,17 @@ extends Control
 var peg_scene = preload("res://Minigames/Pachinko/peg.tscn")
 
 @export var max_ball_vel = 100.0
-@export var ball_velocity_step = 10
+@export var ball_velocity_step = 100
+@export var pegslot_ascend_speed = 3.0
 
 func get_transition_text():
 	return tr("PACHINKO_TRANSITION")
 
 func _ready():
+	ball.lock_rotation = true
 	var num_cols = columns.get_child_count()
 	for row in rows.get_children():
-		var num_cols_filled = randi_range(0, 3)
+		var num_cols_filled = randi_range(2, 5)
 		for i in range(num_cols_filled):
 			var cols_chosen = []
 			var rand_col_idx = randi_range(0, num_cols-1)
@@ -32,37 +34,32 @@ func spawn_peg(row: Node2D, col: Node2D):
 	peg_container.add_child(peg)
 
 func _process(delta):
-	slots.position.y -= 2.0
+	pass
 
-func is_on_side():
-	var margin = 10	
-	var viewport_size = get_viewport_rect().size	
-	if ball.position.x < margin:
-		return [true, 1.0 * ball_velocity_step]
-	if ball.position.x > viewport_size.x-margin:
-		return [true, -1.0 * ball_velocity_step]
-	return [false, 0.0]
-
-func _physics_process(delta):	
-	var on_side = is_on_side()
-	if on_side[0]:
-		ball.constant_force.x = on_side[1]
-		ball.linear_velocity.x = 0
+func move_slots_and_pegs():
+	for slot in slots.get_children():
+		slot.position += Vector2.UP * pegslot_ascend_speed
+	for peg in peg_container.get_children():
+		peg.position += Vector2.UP * pegslot_ascend_speed
 
 func move_ball(dir: float):
-	var should_halt = sign(dir) != sign(ball.constant_force.x) # if we switch directions make it snappy
-	if should_halt:
-		ball.constant_force.x = dir
-		ball.linear_velocity.x = 0
-	if abs(dir + ball.constant_force.x) < max_ball_vel:
+	if dir != 0:
+		ball.constant_force = Vector2.ZERO
 		ball.add_constant_central_force(Vector2(dir, 0.0))
+
+var dir = 0
+func _physics_process(delta):	
+	move_slots_and_pegs()
+	move_ball(dir * ball_velocity_step)
 
 		
 func _on_gui_input(event):
-	if event is InputEventScreenDrag or event is InputEventScreenTouch:
+	if event is InputEventScreenDrag or event is InputEventScreenTouch or event is InputEventMouseMotion:
 		var tap_pos = event.position
 		var viewport_size = get_viewport_rect().size
 		if tap_pos.x < (viewport_size.x / 2.0): # left side of screen
-			move_ball(-1 * ball_velocity_step)
+			dir = -1
 		else: # right side of screen
-			move_ball(1 * ball_velocity_step)
+			dir = 1
+	else:
+		dir = 0

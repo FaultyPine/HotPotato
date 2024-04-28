@@ -18,8 +18,24 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_6qerw")
 
-[node name="MainMenu" parent="." instance=ExtResource("2_stg7c")]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="IngameUI" parent="CanvasLayer" instance=ExtResource("4_dqgl2")]
+visible = false
+z_index = 1
+
+[node name="IngamePause" parent="CanvasLayer" instance=ExtResource("3_23q3p")]
+visible = false
+
+[node name="MinigameTransition" parent="CanvasLayer" instance=ExtResource("5_0dk65")]
+visible = false
+z_index = 1
+
+[node name="MinigameComplete" parent="CanvasLayer" instance=ExtResource("6_qudky")]
+visible = false
+z_index = 1
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("2_stg7c")]
 
 [node name="MinigameContainer" type="Control" parent="."]
 process_mode = 3
@@ -33,24 +49,5 @@ mouse_filter = 1
 
 [node name="MinigameTimer" type="Timer" parent="MinigameContainer"]
 process_mode = 1
-
-[node name="IngamePause" parent="." instance=ExtResource("3_23q3p")]
-visible = false
-layout_mode = 1
-
-[node name="IngameUI" parent="." instance=ExtResource("4_dqgl2")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="MinigameTransition" parent="." instance=ExtResource("5_0dk65")]
-visible = false
-z_index = 1
-layout_mode = 1
-
-[node name="MinigameComplete" parent="." instance=ExtResource("6_qudky")]
-visible = false
-z_index = 1
-layout_mode = 1
 
 [connection signal="timeout" from="MinigameContainer/MinigameTimer" to="." method="_on_minigame_timer_timeout"]

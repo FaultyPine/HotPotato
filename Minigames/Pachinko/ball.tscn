@@ -1,21 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtxqbfoo8dssv"]
 
-[ext_resource type="Texture2D" uid="uid://ck126q1sl5wqe" path="res://icon.svg" id="1_hpjoj"]
+[ext_resource type="Texture2D" uid="uid://bj3koj2q42gjs" path="res://Art/Pachinko/cricket-ball.png" id="1_hsepy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yy48t"]
-radius = 19.2354
+radius = 20.025
 
 [node name="Ball" type="RigidBody2D"]
-position = Vector2(268, 0)
 gravity_scale = 0.65
 linear_damp = 1.0
 
 [node name="BallSprite" type="TextureRect" parent="."]
-offset_left = -19.0
+offset_left = -20.0
 offset_top = -20.0
-offset_right = 21.0
+offset_right = 20.0
 offset_bottom = 20.0
-texture = ExtResource("1_hpjoj")
+texture = ExtResource("1_hsepy")
 expand_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

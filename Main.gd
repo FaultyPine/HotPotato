@@ -24,13 +24,13 @@ const minigames = [
 	preload("res://Minigames/Amazumo/Amazumo.tscn"),
 ]
 
-@onready var main_menu = $MainMenu
+@onready var main_menu = $CanvasLayer/MainMenu
 @onready var minigame_container = $MinigameContainer
-@onready var ingame_pause_menu = $IngamePause
-@onready var ingame_ui = $IngameUI
-@onready var minigame_transition = $MinigameTransition
+@onready var ingame_pause_menu = $CanvasLayer/IngamePause
+@onready var ingame_ui = $CanvasLayer/IngameUI
+@onready var minigame_transition = $CanvasLayer/MinigameTransition
 @onready var minigame_timer = $MinigameContainer/MinigameTimer
-@onready var minigame_complete_ui: MinigameCompleteUI = $MinigameComplete
+@onready var minigame_complete_ui: MinigameCompleteUI = $CanvasLayer/MinigameComplete
 
 func get_current_minigame():
 	return current_minigame

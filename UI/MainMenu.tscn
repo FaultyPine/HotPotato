@@ -177,7 +177,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 color = Color(0, 0.427451, 0.74902, 1)
 
 [node name="PotatoParticlesCPU" type="CPUParticles2D" parent="Background"]
@@ -262,6 +261,7 @@ clip_contents = false
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 bbcode_enabled = true
 text = "[font_size=40][center][wave amp=50]TAP_BEGIN[/wave][/center]"
 

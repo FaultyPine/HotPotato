@@ -11,10 +11,8 @@ func _process(delta):
 	pass
 
 func on_ball_enter_slot():
-	print("win pachinko")
 	Global.on_ingame_minigame_over_signal.emit(Global.MinigameCompleteStatus.SUCCESS)
 
 func _on_body_entered(body):
-	print(body.name)
 	if body.name.contains("Ball"):
 		on_ball_enter_slot()
